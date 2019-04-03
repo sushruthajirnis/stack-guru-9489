@@ -1,0 +1,1 @@
+web: gunicorn stackGuru.wsgi
