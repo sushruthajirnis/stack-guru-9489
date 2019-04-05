@@ -82,7 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+     'sg_db_main':{}
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -111,7 +112,8 @@ USE_TZ = True
 
 # Change 'default' database configuration with $DATABASE_URL.
 DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
-
+# Adding a secondary db if heroku make the environment consistent if it keeps changing for local
+DATABASES['sg_db_main'].update(dj_database_url.config(env=os.environ.get('HEROKU_POSTGRESQL_BROWN_URL'),conn_max_age=500, ssl_require=True))
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -132,6 +134,5 @@ STATICFILES_DIRS = [
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 # Activate Django-Heroku.
 django_heroku.settings(locals())
