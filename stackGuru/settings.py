@@ -87,6 +87,7 @@ DATABASES = {
      'sg_db_main':{}
 }
 
+DATABASE_ROUTERS = ['stackGuruApi.sgrouter.SGDatabaseRouter']
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -114,7 +115,7 @@ USE_TZ = True
 # Change 'default' database configuration with $DATABASE_URL.
 DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
 # Adding a secondary db if heroku make the environment consistent if it keeps changing for local
-DATABASES['sg_db_main'].update(dj_database_url.config(env=os.environ.get('HEROKU_POSTGRESQL_BROWN_URL'),conn_max_age=500, ssl_require=True))
+DATABASES['sg_db_main'].update(dj_database_url.config(env='HEROKU_POSTGRESQL_PINK_URL',conn_max_age=500, ssl_require=True))
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -131,6 +132,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
 ]
+
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
