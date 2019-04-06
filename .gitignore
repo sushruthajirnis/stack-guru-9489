@@ -4,4 +4,5 @@ staticfiles
 .env
 *.sqlite3
 .python-version
-
+.djsettings
+local_settings.py

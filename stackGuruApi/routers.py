@@ -38,6 +38,9 @@ class SGRouter(object):
         elif db == 'sg_db_main':
             # Ensure that all other apps don't get migrated on the example_db database.
             return False
+        elif app_label == 'djadmin':
+            # Specific for local default migrations
+            return db == 'default'
 
         # No opinion for all other scenarios
         return None
