@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
- #   'stackguruapi',
+    'stackGuruApi',
 ]
 
 MIDDLEWARE = [
@@ -86,8 +86,7 @@ DATABASES = {
     },
      'sg_db_main':{}
 }
-
-#DATABASE_ROUTERS = ['stackguruapi.sgrouter.SGDatabaseRouter']
+DATABASE_ROUTERS =['stackGuruApi.routers.SGRouter']
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -132,7 +131,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
 ]
-
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
