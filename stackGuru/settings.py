@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'stackguruapi',
+ #   'stackguruapi',
 ]
 
 MIDDLEWARE = [
@@ -87,7 +87,7 @@ DATABASES = {
      'sg_db_main':{}
 }
 
-DATABASE_ROUTERS = ['stackguruapi.sgrouter.SGDatabaseRouter']
+#DATABASE_ROUTERS = ['stackguruapi.sgrouter.SGDatabaseRouter']
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
