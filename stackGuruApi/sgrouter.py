@@ -33,6 +33,6 @@ class SGDatabaseRouter:
         Make sure the discourse app only appears in the 'discourse'
         database.
         """
-        if app_label == 'stackGuruApi':
+        if app_label == 'stackguruapi':
             return db == 'sg_db_main'
         return None
