@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'stackGuruApi',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +118,7 @@ DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require
 DATABASES['sg_db_main'].update(dj_database_url.config(env='HEROKU_POSTGRESQL_PINK_URL',conn_max_age=500, ssl_require=True))
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*','0.0.0.0','localhost']

@@ -11,5 +11,6 @@ gunicorn = "*"
 django = "*"
 psycopg2 = "==2.7.7"
 django-heroku = "*"
+djangorestframework = "*"
 
 [dev-packages]
