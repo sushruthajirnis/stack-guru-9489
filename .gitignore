@@ -6,3 +6,4 @@ staticfiles
 .python-version
 .djsettings
 local_settings.py
+.vscode/

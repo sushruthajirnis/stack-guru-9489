@@ -1,3 +1,4 @@
+import json
 from django.urls import reverse
 from rest_framework.test import APITestCase,APIClient
 from rest_framework.views import status
@@ -32,7 +33,44 @@ class GetAllSkills(BaseViewTest):
 
         #make fetch
         expected = Skills.objects.all()
-        print(response.data)
         serialized=SkillsSerializer(expected,many=True)
         self.assertEqual(response.data,serialized.data)
         self.assertEqual(response.status_code,status.HTTP_200_OK)
+
+
+class createSkillHappyPathBadPath(BaseViewTest):
+
+    def test_create_skill_good(self):
+        url=reverse(
+            "create-skill",
+            kwargs={
+                "version":"v1"
+            }
+        )
+        response=self.client.post(
+            url,
+            data=json.dumps({
+                "user_name":"shajirnis",
+                "skill_name":"karate"
+            }),
+            content_type="application/json"
+        )
+        #skill created
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_create_skill_bad(self):
+        url=reverse(
+            "create-skill",
+            kwargs={
+                "version":"v1"
+            }
+        )
+        response=self.client.post(
+            url,
+            data=json.dumps({
+                "user_name":"kjirnis"
+            }),
+            content_type="application/json"
+        )
+        #skill not created
+        self.assertEqual(response.status_code,status.HTTP_400_BAD_REQUEST)
